@@ -22,20 +22,20 @@ namespace Business.Concrete
         public IResult Add(Car car)
         {
             _carDal.Add(car);
-            return new SuccessResult(Messages.ProductAdded);
+            return new SuccessResult(Messages.EntityAdded);
         }
 
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new SuccessResult(Messages.ProductDeleted);
+            return new SuccessResult(Messages.EntityDeleted);
 
         }
 
         public IDataResult<List<Car>> GetAll()
         {
 
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.EntityListed );
         }
 
         public IDataResult<Car> GetById(int CarId)
@@ -45,13 +45,13 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetailDtos()
         {
-            return new SuccessDataResult<List<CarDetailDto>>( _carDal.GetCarDetailDtos(),Messages.CarDetailListed);
+            return new SuccessDataResult<List<CarDetailDto>>( _carDal.GetCarDetailDtos(),Messages.EntityDetailListed );
         }
 
         public IResult Update(Car car)
         {
             _carDal.Update(car);
-            return new SuccessResult(Messages.ProductUpdated);
+            return new SuccessResult(Messages.EntityUpdated);
         }
     }
 }

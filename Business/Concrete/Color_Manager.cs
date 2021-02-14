@@ -21,30 +21,30 @@ namespace Business.Concrete
         public IResult Add(Color_ color)
         {
             _color_Dal.Add(color);
-            return new SuccessResult(Messages.ProductAdded );
+            return new SuccessResult(Messages.EntityAdded );
         }
 
         public IResult Deleted(Color_ color)
         {
             _color_Dal.Delete(color);
-            return new SuccessResult(Messages.ProductDeleted );
+            return new SuccessResult(Messages.EntityDeleted );
         }
 
         public IDataResult<List<Color_>> GetAll()
         {
-           return new SuccessDataResult<List<Color_>>(  _color_Dal.GetAll(),Messages.ProductsListed );
+           return new SuccessDataResult<List<Color_>>(  _color_Dal.GetAll(),Messages.EntityListed );
         }
 
         public IDataResult<Color_> GetById(int colorId)
         {
            
-            return new SuccessDataResult<Color_>(_color_Dal.Get(c => c.Id == colorId), Messages.ProductsListed);
+            return new SuccessDataResult<Color_>(_color_Dal.Get(c => c.Id == colorId), Messages.EntityListed);
         }
 
         public IResult Update(Color_ color)
         {
             _color_Dal.Update(color);
-            return new SuccessResult(Messages.ProductUpdated) ;
+            return new SuccessResult(Messages.EntityUpdated) ;
         }
     }
 }
