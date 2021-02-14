@@ -33,13 +33,25 @@ namespace ConsoleUI
             //    Console.WriteLine(car.Description);
             //}
 
-            CarManager carManager = new CarManager(new CarDal());
-            foreach (var car in carManager.GetCarDetailDtos())
-            {
+            //CarManager carManager = new CarManager(new CarDal());
+            //foreach (var car in carManager.GetCarDetailDtos())
+            //{
 
-                Console.WriteLine(car.BrandName + " " + car.ColorName +" " + car.ModelYear +" "+ car.Description);
-            }
-            
+            //    Console.WriteLine(car.BrandName + " " + car.ColorName +" " + car.ModelYear +" "+ car.Description);
+            //}
+
+            CarManager carManager = new CarManager(new CarDal());
+
+            //carManager.Update(new Car { Id = 1, BrandId = 2, ColorId = 1,ModelYear=2020,  DailyPrice = 25.57,Description="Mercsedes"});
+
+
+            //var result = carManager.GetById(1);
+            //                Console.WriteLine(result.BrandId  + " " + result.ColorId  + " " + result.ModelYear + " "+ result.DailyPrice  + " " + result.Description);
+
+            carManager.Delete(new Car { Id = 1, BrandId = 2, ColorId = 1, ModelYear = 2020, DailyPrice = 25.57, Description = "Mercsedes" });
+
+
+
         }
     }
 }
