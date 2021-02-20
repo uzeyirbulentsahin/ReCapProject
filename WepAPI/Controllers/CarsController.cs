@@ -11,20 +11,20 @@ namespace WepAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class CarsController : ControllerBase
     {
-        IUserService _userService;
+        ICarService _carService;
 
-        public UsersController(IUserService userService)
+        public CarsController(ICarService carService)
         {
-            this._userService = userService;
+            this._carService = carService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
 
-            var result = _userService.GetAll();
+            var result = _carService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -37,9 +37,9 @@ namespace WepAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(User user)
+        public IActionResult Add(Car car)
         {
-            var result = _userService.Add(user);
+            var result = _carService.Add(car);
             if (result.Success)
             {
                 return Ok(result);
@@ -55,7 +55,7 @@ namespace WepAPI.Controllers
         public IActionResult GetById(int Id)
         {
 
-            var result = _userService.GetById(Id);
+            var result = _carService.GetById(Id);
             if (result.Success)
             {
                 return Ok(result);
@@ -67,6 +67,7 @@ namespace WepAPI.Controllers
 
         }
 
+       
 
     }
 }
