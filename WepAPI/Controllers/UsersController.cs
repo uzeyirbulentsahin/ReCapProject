@@ -50,8 +50,38 @@ namespace WepAPI.Controllers
             }
 
         }
+        [HttpPost("update")]
+        public IActionResult Update(User user)
+        {
+            var result = _userService.Update(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
 
-        [HttpGet("getbyid")]
+        }
+
+            [HttpPost("delete")]
+            public IActionResult Delete(User user)
+            {
+                var result = _userService.Deleted(user);
+                if (result.Success)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return BadRequest(result);
+                }
+
+            }
+
+
+            [HttpGet("getbyid")]
         public IActionResult GetById(int Id)
         {
 

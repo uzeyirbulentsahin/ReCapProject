@@ -11,65 +11,22 @@ namespace WepAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
+    public class CarImagesController : ControllerBase
     {
-        ICarService _carService;
+        ICarImageService _carImageService;
 
-        public CarsController(ICarService carService)
+        public CarImagesController(ICarImageService carImageService)
         {
-            this._carService = carService;
+            _carImageService = carImageService;
         }
+
+
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
 
-            var result = _carService.GetAll();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
-
-        }
-
-        [HttpPost("add")]
-        public IActionResult Add(Car car)
-        {
-            var result = _carService.Add(car);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
-
-        }
-
-        [HttpPost("update")]
-        public IActionResult Update(Car car)
-        {
-            var result = _carService.Update(car);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
-
-        }
-
-        [HttpPost("delete")]
-        public IActionResult Delete(Car car)
-        {
-            var result = _carService.Delete(car);
+            var result = _carImageService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -85,7 +42,7 @@ namespace WepAPI.Controllers
         public IActionResult GetById(int Id)
         {
 
-            var result = _carService.GetById(Id);
+            var result = _carImageService.GetById(Id);
             if (result.Success)
             {
                 return Ok(result);
@@ -97,7 +54,51 @@ namespace WepAPI.Controllers
 
         }
 
-       
 
+
+
+
+
+
+        [HttpPost("add")]
+        public IActionResult Add(CarImage carImage) {
+            var result = _carImageService.Add(carImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
+        [HttpPost("delete")]
+        public IActionResult Delete(CarImage carImage)
+        {
+            var result = _carImageService.Delete(carImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update(CarImage carImage)
+        {
+            var result = _carImageService.Update(carImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
     }
 }

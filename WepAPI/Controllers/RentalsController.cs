@@ -11,20 +11,36 @@ namespace WepAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
+    public class RentalsController : ControllerBase
     {
-        ICarService _carService;
+        IRentalService _rentalService;
 
-        public CarsController(ICarService carService)
+        public RentalsController(IRentalService rentalService)
         {
-            this._carService = carService;
+            this._rentalService = rentalService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
 
-            var result = _carService.GetAll();
+            var result = _rentalService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+
+        }
+
+        [HttpGet("getrentals")]
+        public IActionResult GetRentals()
+        {
+
+            var result = _rentalService.GetRentalDetailDtos  ();
             if (result.Success)
             {
                 return Ok(result);
@@ -37,9 +53,9 @@ namespace WepAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Car car)
+        public IActionResult Add(Rental rental)
         {
-            var result = _carService.Add(car);
+            var result = _rentalService.Add(rental);
             if (result.Success)
             {
                 return Ok(result);
@@ -50,11 +66,10 @@ namespace WepAPI.Controllers
             }
 
         }
-
         [HttpPost("update")]
-        public IActionResult Update(Car car)
+        public IActionResult Update(Rental rental)
         {
-            var result = _carService.Update(car);
+            var result = _rentalService.Update(rental);
             if (result.Success)
             {
                 return Ok(result);
@@ -67,9 +82,9 @@ namespace WepAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Car car)
+        public IActionResult Delete(Rental rental)
         {
-            var result = _carService.Delete(car);
+            var result = _rentalService.Delete(rental);
             if (result.Success)
             {
                 return Ok(result);
@@ -85,7 +100,7 @@ namespace WepAPI.Controllers
         public IActionResult GetById(int Id)
         {
 
-            var result = _carService.GetById(Id);
+            var result = _rentalService.GetById(Id);
             if (result.Success)
             {
                 return Ok(result);
@@ -96,8 +111,5 @@ namespace WepAPI.Controllers
             }
 
         }
-
-       
-
     }
 }

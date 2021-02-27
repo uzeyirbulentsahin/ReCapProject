@@ -23,6 +23,20 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<UserDal>().As<IUserDal>().SingleInstance();
 
+            builder.RegisterType<Color_Manager>().As<IColor_Service>().SingleInstance();
+            builder.RegisterType<Color_Dal>().As<IColor_Dal>().SingleInstance();
+
+            builder.RegisterType<BrandManager>().As<IBrandService>().SingleInstance();
+            builder.RegisterType<BrandDal>().As<IBrandDal>().SingleInstance();
+
+            builder.RegisterType<CustomerManager>().As<ICustomerService>().SingleInstance();
+            builder.RegisterType<CustomerDal>().As<ICustomerDal>().SingleInstance();
+
+            builder.RegisterType<RentalManager>().As<IRentalService>().SingleInstance();
+            builder.RegisterType<RentalDal>().As<IRentalDal>().SingleInstance();
+
+            builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
+            builder.RegisterType<CarImageDal>().As<ICarImageDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
