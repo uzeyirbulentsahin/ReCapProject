@@ -20,6 +20,11 @@ namespace Business.Concrete
 
         public IResult Add(CarImage carImage)
         {
+            //c# guid oluştur
+            //yolundanresmi al
+            //adını değiştir ve yeni kalsore yerleştir
+            //yeni yolunu kaydet
+
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.EntityAdded);
         }
