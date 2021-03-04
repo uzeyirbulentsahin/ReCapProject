@@ -3,10 +3,10 @@ using Business.Constants;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Business.Concrete
 {
@@ -21,18 +21,16 @@ namespace Business.Concrete
 
         public List<OperationClaim> GetClaims(User user)
         {
-            return _userDal.GetClaims(user);
+            return  _userDal.GetClaims(user);
         }
 
 
         public User GetByMail(string email)
         {
-            return _userDal.Get(u => u.Email == email);
+            return  _userDal.Get(u => u.Email == email);
         }
 
       
-
-
         public IResult Add(User user)
         {
             _userDal.Add(user);
