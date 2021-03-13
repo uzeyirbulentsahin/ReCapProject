@@ -40,7 +40,7 @@ namespace WepAPI.Controllers
         public IActionResult GetRentals()
         {
 
-            var result = _rentalService.GetRentalDetailDtos  ();
+            var result = _rentalService.GetRentalDetailDtos();
             if (result.Success)
             {
                 return Ok(result);

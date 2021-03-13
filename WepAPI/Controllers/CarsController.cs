@@ -19,7 +19,21 @@ namespace WepAPI.Controllers
         {
             this._carService = carService;
         }
+        [HttpGet("getcars")]
+        public IActionResult GetRentals()
+        {
 
+            var result = _carService.GetCarDetailDtos ();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+
+        }
         [HttpGet("getall")]
         public IActionResult GetAll()
         {

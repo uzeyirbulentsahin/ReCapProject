@@ -7,13 +7,39 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using AutoMapper;
 
 namespace DataAccess.Concrete
 {
     public class RentalDal : EfEntityRepositoryBase<Rental, ReCapContext>, IRentalDal
-    {
+    { 
+            IMapper _mapper;
+            public RentalDal (IMapper mapper)
+            {
+                        _mapper = mapper;
+            }
+
         public List<RentalDetailDto> GetRentalDetailDtos()
         {
+
+            //using (ReCapContext context = new ReCapContext())
+            //{
+            //    var result = context.Rentals.FromSqlInterpolated($"EXEC RentalView");
+
+            //    var rentaldtos = _mapper.Map<List<RentalDetailDto>>(result);
+
+
+            //    return rentaldtos.ToList();
+
+
+
+            //}
+
+
+
+
+
+
             using (ReCapContext context = new ReCapContext())
             {
                 var result = from r in context.Rentals
