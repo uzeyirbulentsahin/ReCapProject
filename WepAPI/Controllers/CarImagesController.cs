@@ -42,7 +42,7 @@ namespace WepAPI.Controllers
         public IActionResult GetById(int Id)
         {
 
-            var result = _carImageService.GetById(Id);
+            var result = _carImageService.GetCarDetail(Id);
             if (result.Success)
             {
                 return Ok(result);

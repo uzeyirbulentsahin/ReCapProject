@@ -3,6 +3,7 @@ using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -78,6 +79,11 @@ namespace Business.Concrete
            return new SuccessDataResult< List < CarImage >>( _carImageDal.GetAll(),Messages.EntityListed );
 
         }
+        public IDataResult<List<CarImage>> GetCarDetail(int id)
+        {
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(d=>d.CarId==id), Messages.EntityListed);
+
+        }
 
         public IDataResult<CarImage> GetById(int carImageId)
         {
@@ -90,5 +96,7 @@ namespace Business.Concrete
             _carImageDal.Update(carImage);
             return new SuccessResult(Messages.EntityUpdated);
         }
+
+        
     }
 }

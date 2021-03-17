@@ -34,6 +34,39 @@ namespace WepAPI.Controllers
             }
 
         }
+
+        [HttpGet("getcarsbycolor")]
+        public IActionResult GetCarsByCategory(int colorId)
+        {
+
+            var result = _carService.GetAllByColor(colorId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+
+        }
+
+        [HttpGet("getcarsbybrand")]
+        public IActionResult GetCarsByBrand(int brandId)
+        {
+
+            var result = _carService.GetAllByBrand(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+
+        }
+
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
@@ -98,8 +131,9 @@ namespace WepAPI.Controllers
         [HttpGet("getbyid")]
         public IActionResult GetById(int Id)
         {
+            
 
-            var result = _carService.GetById(Id);
+               var result = _carService.GetById(Id);
             if (result.Success)
             {
                 return Ok(result);
@@ -111,7 +145,9 @@ namespace WepAPI.Controllers
 
         }
 
-       
+      
+
+
 
     }
 }
